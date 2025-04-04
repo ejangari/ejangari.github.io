@@ -1,0 +1,333 @@
+:root {
+  --black: #171321;
+  --dkblue: #0d314b;
+  --plum: #4b0d49;
+  --hotmag: #ff17e4;
+  --magenta: #e310cb;
+  --aqua: #86fbfb;
+  --white: #f7f8fa;
+  --font-size: 1.3rem;
+  --mono: "Oxygen mono", monospace;
+  --sans: Oxygen, sans-serif;
+}
+
+/*border box model: https://css-tricks.com/box-sizing/ */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--sans);
+  background-color: var(--black);
+  color: var(--white);
+  font-size: var(--font-size);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+a {
+  color: var(--magenta);
+}
+
+a:hover {
+  color: var(--hotmag);
+  text-decoration: none;
+}
+
+img{
+  width:100%;
+}
+
+/* background color divs */
+.section-plum{
+  background-color: var(--plum);
+}
+
+.section-dkblue{
+  background-color: var(--dkblue);
+}
+
+.gradient{ /*para no agregar bordes entre las secciones q deseo q tengan borde, creo un gradiente usando https://cssgradient.io y lo invoco dentro de un div entre las secciones*/
+  background: linear-gradient(90deg, rgba(255,23,228,1) 0%, rgba(134,251,251,1) 100%);
+  height: 2px; /* pronunciation: jait */
+}
+
+/* intro section styles */
+
+#intro {
+  /*padding-bottom: 10rem;  gap entre intro section and contact section*/
+  padding: 4rem 1rem 10 rem 1rem; /*trbl Top Right Button Left*/
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#intro p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#intro .name {
+  font-family: var(--mono);
+  font-size: 1rem;
+}
+
+.name span {
+  font-family: var(--sans);
+  font-size: 3rem;
+  color: var(--aqua);
+  display: block;
+  font-weight:300;
+}
+
+#intro h2 {
+  font-size: 4rem;
+  /*font-weight: normal;*/
+}
+
+/*contact section*/
+
+#contact {
+  padding: 3rem 0;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  /*background-color: var(--plum);*/
+  font-size: 1rem;
+}
+
+#contact p:last-child {
+  margin-top: 3rem;
+}
+
+/*navigation bar*/
+
+nav{
+  font-family: var(--mono);
+  font-size: 80%;
+  padding: 1rem;
+}
+
+nav h1 a{
+  font-family:var (--sans);
+}
+
+nav ul{
+  list-style-type: none;
+  padding: 0;
+  margin:0;
+  display: flex; /*pone todos los elelentos en una misma linea*/
+  flex-flow: row wrap;
+  justify-content:center;
+  align-items:center;
+  gap: 2rem;  /* Espacio entre los elementos*/
+}
+
+nav li:first-child{
+  flex-basis:100%;
+  text-align: center;
+}
+
+nav [class*="fa-"]{ /*busca el selector que comience la class name con: fa- */
+  font-size: 150%;
+  color: var(--aqua);
+}
+
+nav h1 [class*="fa-"]{
+  font-size: 100%;
+  color: var(--aqua)
+}
+
+nav a{
+  color: var(--white);
+  text-decoration: none;
+  display: block; /*para que toda la seccion cuando se expanda o contraigámoslo la pagina sea clickeable a los link*/
+}
+
+nav a:hover,
+nav [class*="fa-"]:hover {
+  color: var(--magenta); /*se debe agregar esta linea porq la especificidad de Nav es > q nva a:hover*/
+}
+ 
+.button{
+  border-radius: 5px;
+  background-color: var(--magenta);
+  padding: 0.5rem;
+  color: var(--white);
+  font-family: var(--mono);
+  text-decoration: none;
+}
+
+.button:hover{
+  color: var(--white);
+  background-color: var(--hotmag);
+}
+
+/*Projects section */
+#projects{
+  padding: 4rem 1rem;
+}
+
+#projects h2{
+  font-size: 2.5rem;
+  margin-bottom: calc(2.5rem * 1.5);
+}
+
+#projects h3{
+  color: var(--aqua);
+}
+
+#projects h4{
+  font-size: 1rem;
+  font-family: var(--mono);
+  margin: 0; /*0 space between h4 and project's name*/
+}
+
+.blackbox{
+  background-color: var(--black);
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;  /*little bit smaller by default*/
+  line-height: 1.5;
+}
+
+#projects ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+#projects img{
+  margin: 2rem 0 4rem 0;
+  padding: 1rem;
+  border-left: 1px solid var(--aqua);
+  border-top: 1px solid var(--aqua);
+  border-radius: 25px;
+
+}
+
+
+/*Responsibe design*/
+@media (min-width: 850px){
+  /*Solo son efectivos o aplican cuando window is at least 850 pixeles wide (ancho)*/
+  
+    nav{
+      max-width: 1200px;/*Limitar la screen a 1200 pixeles no mas de eso, para q no se separe mucho el nombre de la barra de navegacion*/
+      margin: 0 auto;/*Will center that very nicely on the page*/
+  
+    }
+    
+    nav li:first-child {
+      flex-basis:auto;
+      text-align: left;
+      margin-right: auto;
+    }
+  }
+
+
+
+
+
+
+
+
+
+/*footer section*/
+footer{
+  text-align:center;
+  padding: 4rem 0;  /*space between Top and Button on the footer and the contact section*/
+}
+
+footer ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 2rem 0;
+    display: flex; /*pone todos los elelentos en una misma linea*/
+    flex-flow: row wrap;
+    justify-content:center;
+    gap: 3rem;  /* Espacio entre los elementos*/
+    font-size: 3rem;
+}
+
+  @media (min-width: 800px){
+    /*Solo son efectivos o aplican cuando window is at least 550 pixeles wide (ancho)*/
+    article{
+      display:grid;
+      /*grid-template-columns: 1fr 1fr;  grid with 2 columns*/
+      grid-template-columns: repeat(10, 1fr);  /*We have a 10 columns*/
+      /*gap: 1rem; space between text and image*/
+    }
+
+    #projects{
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #projects img{
+      grid-column: 1/6; /*To overlap (sobreponer) the image and the text*/
+      grid-row: 1/2; /*overlap image and text in the same row*/
+    }
+
+    .text {
+        grid-column: 5/11;
+        grid-row: 1/2; /*overlap image and text in the same row*/
+        order: 2; /*by default the image doesn;t have an order property assigned to it, so order:2 just flips those right over*/
+      text-align: right;
+    }
+
+    #projects ul{
+      justify-content:flex-end; /*add the text of the end when Flex finish (right side)*/
+    }
+
+    #projects .reverse .text {
+      grid-column: 1/7;
+      order: 2;
+      text-align: left;
+    }
+
+    #projects .reverse img{
+      grid-column: 6/11;
+      grid-row: 1/2;
+    }
+
+    #projects .reverse ul{
+      justify-content: flex-start;
+    }
+}
+
+@media (min-width:850px){
+  nav{
+    max-width:1200px;
+    margin: 0 auto;
+  }
+  
+  nav li:first-child{
+    flex-basis: auto;
+    text-align: left;
+    margin-right: auto;
+  }
+}
+
+
+
+
+
+
+  
